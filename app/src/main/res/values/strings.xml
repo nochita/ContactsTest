@@ -1,0 +1,13 @@
+<resources>
+    <string name="app_name">Contacts Test</string>
+
+    <string name="progress_dialog_title">Contacts</string>
+    <string name="progress_dialog_message">please wait...</string>
+    <string name="error">Error</string>
+    <string name="error_message">Oops, there was an error</string>
+    <string name="try_again">Try again</string>
+    <string name="birthdate">BirthDate: %1s</string>
+    <string name="address_home">Home address: %1s</string>
+    <string name="address_work">Work address: %1s</string>
+
+</resources>
