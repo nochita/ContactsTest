@@ -73,6 +73,7 @@ public class ContactDetailFragment extends Fragment {
     }
 
     private void populateData(){
+        imageView.setVisibility(View.VISIBLE);
         imageView.setImageURI(contactDetail.getPhoto());
         nameTextView.setText(contactDetail.getFirstName() + " " + contactDetail.getLastName());
         birthdateTextView.setText(getString(R.string.birthdate,
