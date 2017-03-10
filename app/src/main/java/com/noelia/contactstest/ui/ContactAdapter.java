@@ -6,14 +6,12 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.facebook.drawee.view.SimpleDraweeView;
 import com.noelia.contactstest.R;
 import com.noelia.contactstest.helper.UIHelper;
 import com.noelia.contactstest.model.Contact;
-import com.noelia.contactstest.model.ContactPhone;
-import com.nostra13.universalimageloader.core.ImageLoader;
 
 import java.util.List;
 
@@ -53,7 +51,7 @@ public class ContactAdapter extends RecyclerView.Adapter<ContactAdapter.ContactV
     public void onBindViewHolder(ContactViewHolder holder, int position) {
         Contact contact = contactList.get(position);
 
-        ImageLoader.getInstance().displayImage(contact.getThumb(), holder.imageView);
+        holder.imageView.setImageURI(contact.getThumb());
         holder.firstNameTextView.setText(contact.getFirstName());
         holder.lastNameTextView.setText(contact.getLastName());
         holder.birthdateTextView.setText(context.getString(R.string.birthdate,
@@ -76,7 +74,7 @@ public class ContactAdapter extends RecyclerView.Adapter<ContactAdapter.ContactV
     public class ContactViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
 
         public ViewGroup cardContainer;
-        public ImageView imageView;
+        public SimpleDraweeView imageView;
         public TextView firstNameTextView;
         public TextView lastNameTextView;
         public TextView birthdateTextView;
@@ -86,7 +84,7 @@ public class ContactAdapter extends RecyclerView.Adapter<ContactAdapter.ContactV
         public ContactViewHolder(View itemView, IMyViewHolderClicks listener) {
             super(itemView);
             cardContainer = (ViewGroup) itemView.findViewById(R.id.card_container);
-            imageView = (ImageView) itemView.findViewById(R.id.contact_image);
+            imageView = (SimpleDraweeView ) itemView.findViewById(R.id.contact_image);
             firstNameTextView = (TextView) itemView.findViewById(R.id.contact_first_name);
             lastNameTextView = (TextView) itemView.findViewById(R.id.contact_last_name);
             birthdateTextView = (TextView) itemView.findViewById(R.id.contact_birth_date);

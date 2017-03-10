@@ -19,8 +19,6 @@ import com.google.gson.reflect.TypeToken;
 import com.noelia.contactstest.R;
 import com.noelia.contactstest.helper.ConnectionHelper;
 import com.noelia.contactstest.model.Contact;
-import com.nostra13.universalimageloader.core.ImageLoader;
-import com.nostra13.universalimageloader.core.ImageLoaderConfiguration;
 
 import java.lang.reflect.Type;
 import java.util.ArrayList;
@@ -39,14 +37,6 @@ public class MainFragment extends Fragment implements SwipeRefreshLayout.OnRefre
 
     public static Fragment newInstance(){
         return new MainFragment();
-    }
-
-    @Override
-    public void onCreate(@Nullable Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-
-        ImageLoaderConfiguration config = new ImageLoaderConfiguration.Builder(getActivity()).build();
-        ImageLoader.getInstance().init(config);
     }
 
     @Override

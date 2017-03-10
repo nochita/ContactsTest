@@ -9,17 +9,15 @@ import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.facebook.drawee.view.SimpleDraweeView;
 import com.google.gson.Gson;
 import com.noelia.contactstest.R;
 import com.noelia.contactstest.helper.ConnectionHelper;
 import com.noelia.contactstest.helper.UIHelper;
 import com.noelia.contactstest.model.ContactDetail;
 import com.noelia.contactstest.model.ContactDetailAddress;
-import com.nostra13.universalimageloader.core.ImageLoader;
-import com.nostra13.universalimageloader.core.ImageLoaderConfiguration;
 
 /**
  * Created by nochita.
@@ -29,7 +27,7 @@ public class ContactDetailFragment extends Fragment {
     public static final String ARG_CONTACT_ID = "contact_id";
     private ContactDetail contactDetail;
     private String contactId;
-    private ImageView imageView;
+    private SimpleDraweeView imageView;
     private TextView nameTextView;
     private TextView birthdateTextView;
     private ViewGroup phoneContainer;
@@ -46,9 +44,6 @@ public class ContactDetailFragment extends Fragment {
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
-        ImageLoaderConfiguration config = new ImageLoaderConfiguration.Builder(getActivity()).build();
-        ImageLoader.getInstance().init(config);
 
         Bundle args = getArguments();
         contactId =  args.getString(ARG_CONTACT_ID);
@@ -70,7 +65,7 @@ public class ContactDetailFragment extends Fragment {
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-        imageView = (ImageView) view.findViewById(R.id.photo_detail_imageview);
+        imageView = (SimpleDraweeView) view.findViewById(R.id.photo_detail_imageview);
         nameTextView = (TextView) view.findViewById(R.id.contact_name);
         birthdateTextView = (TextView) view.findViewById(R.id.contact_birth_date);
         phoneContainer = (ViewGroup) view.findViewById(R.id.contact_phone_container);
@@ -78,7 +73,7 @@ public class ContactDetailFragment extends Fragment {
     }
 
     private void populateData(){
-        ImageLoader.getInstance().displayImage(contactDetail.getPhoto(), imageView);
+        imageView.setImageURI(contactDetail.getPhoto());
         nameTextView.setText(contactDetail.getFirstName() + " " + contactDetail.getLastName());
         birthdateTextView.setText(getString(R.string.birthdate,
                 UIHelper.formatDateToUserFriendly(contactDetail.getBirthdate())));

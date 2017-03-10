@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:fresco="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:layout_margin="8dp"
@@ -30,10 +31,12 @@
         android:layout_height="wrap_content"
         android:orientation="vertical"/>
 
-    <ImageView
+    <com.facebook.drawee.view.SimpleDraweeView
         android:id="@+id/photo_detail_imageview"
         style="@style/photoStyle"
-        android:layout_height="wrap_content"
         android:layout_width="match_parent"
-        android:layout_marginTop="8dp"/>
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        fresco:placeholderImage="@drawable/media_image_placeholder" />
+
 </LinearLayout>

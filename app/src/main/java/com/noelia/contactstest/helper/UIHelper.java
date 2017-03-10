@@ -41,6 +41,7 @@ public class UIHelper {
 
     public static void populatePhonesIntoContainer(List<ContactPhone> phoneList, ViewGroup container,
                                                    Context context){
+        container.removeAllViews();
         for(ContactPhone phone : phoneList){
             TextView textView = new TextView(context);
             if(phone.isValid()){
